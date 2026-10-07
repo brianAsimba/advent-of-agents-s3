@@ -24,6 +24,9 @@ Agents choose their own actions at runtime: they call tools, touch data, and kee
 4. **Optimize:** `agents-cli eval run` (LLM judge, billable).
 5. **Scale + Govern:** deploy with `--agent-identity`, commented out until Day 5.
 
+## Running it on Claude
+The course's `agents-cli` path assumes Gemini on Google Cloud. My version is in `day01/`: plain ADK, Claude via `LiteLlm(model="anthropic/claude-opus-5-5")`, the same two tools and spec, tool tests in `day01/tests`, and the trace viewed in `adk web`. The model is the only line that changes; the ADLC lesson is identical.
+
 ## Applied: DESIGN_SPEC for my trading agent
 ```markdown
 # trading-agent

@@ -14,7 +14,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | Day | Topic | Notes | Code run |
 |---|---|---|---|
 | 0 | Kick-off: agent governance & security (video) | | |
-| 1 | Five phases of the Agent Development Lifecycle | [notes](notes/day01-adlc.md) | ☐ |
+| 1 | Five phases of the Agent Development Lifecycle | [notes](notes/day01-adlc.md) | ☐ [day01/](day01/README.md) (Claude) |
 | 2 | Agent security: SAIF guardrails | [notes](notes/day02-saif-guardrails.md) | ☐ |
 | 3 | Architecting secure multi-agent systems | [notes](notes/day03-secure-multi-agent.md) | n/a (architecture day) |
 
@@ -76,7 +76,13 @@ S1 = Dec 2025 (`adventofagents.com/2025/12/DD`), S2 = Mar 2026 (`adventofagents.
 
 Skippable: S1-01, S1-21, S1-25, S2-01 (kick-offs and recaps), S1-06 (IDE setup), S1-12/S1-13 (Live API, Interactions API) unless a later S3 day uses them, S1-17/S2-03 (model announcements).
 
-## Setup (Windows, personal Google account — never the work account or work laptop)
+## Running the course on Claude
+I follow the course with Google ADK on my PC and **Claude as the model** (via LiteLLM and an Anthropic API key in each agent folder's gitignored `.env`). Python environment: `uv` at the repo root (`uv run ...`). Tests: `uv run pytest`.
+
+- **Agent-building days:** run locally on Claude; the model is a one-line change.
+- **Google-service days** (Model Armor, Agent Gateway, Registry, deploy): those services need a Google Cloud project whatever the model is. Either set it up then (steps below), or build the same control locally with ADK callbacks (`before_model` / `before_tool` / `after_model`) and read the Google version.
+
+## Setup for Google-service days (Windows, personal Google account — never the work account or work laptop)
 1. **Google Cloud account:** sign in at https://console.cloud.google.com with a personal Google account and start the free trial (new accounts get trial credits; a card is needed for verification).
 2. **Project:** create one named `advent-agents-s3` and copy its **Project ID**.
 3. **Budget alert first:** Billing → Budgets & alerts → create a budget (e.g. $25) with email alerts at 50/90/100%.
