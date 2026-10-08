@@ -22,6 +22,9 @@ git clone https://github.com/google/saif-data.git
 ```
 Clones Google's SAIF data repo and serves a local demo that scans an agent for defense-in-depth gaps. Run in Git Bash/WSL. When it runs, record which risks it flags and at which layer each defense sits.
 
+## Running it on Claude
+Instead of the `saif-data` demo (which needs Google Cloud), `day02/` builds the three checkpoints into an ADK agent with callbacks: `before_model_callback` (IN), `before_tool_callback` (DURING), `after_model_callback` (OUT). A `before_tool_callback` that returns a dict *replaces* the tool result, so the tool never runs. A `before_model_callback` that returns an `LlmResponse` skips the model call entirely.
+
 ## Applied
 | Threat | Trading agent | Barber pilot |
 |---|---|---|

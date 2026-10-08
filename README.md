@@ -15,7 +15,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 |---|---|---|---|
 | 0 | Kick-off: agent governance & security (video) | | |
 | 1 | Five phases of the Agent Development Lifecycle | [notes](notes/day01-adlc.md) | ☐ [day01/](day01/README.md) (Claude) |
-| 2 | Agent security: SAIF guardrails | [notes](notes/day02-saif-guardrails.md) | ☐ |
+| 2 | Agent security: SAIF guardrails | [notes](notes/day02-saif-guardrails.md) | ☐ [day02/](day02/README.md) (Claude, barber-shop guardrails) |
 | 3 | Architecting secure multi-agent systems | [notes](notes/day03-secure-multi-agent.md) | n/a (architecture day) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
