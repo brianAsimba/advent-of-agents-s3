@@ -16,7 +16,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | 0 | Kick-off: agent governance & security (video) | | |
 | 1 | Five phases of the Agent Development Lifecycle | [notes](notes/day01-adlc.md) | ☐ [day01/](day01/README.md) (Claude) |
 | 2 | Agent security: SAIF guardrails | [notes](notes/day02-saif-guardrails.md) | ☐ [day02/](day02/README.md) (Claude, barber-shop guardrails) |
-| 3 | Architecting secure multi-agent systems | [notes](notes/day03-secure-multi-agent.md) | n/a (architecture day) |
+| 3 | Architecting secure multi-agent systems | [notes](notes/day03-secure-multi-agent.md) | ☐ [day03/](day03/README.md) (Claude, 3-agent trading desk) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
 Don't binge the old seasons. When a Season 3 day assumes something I don't know, open **one** earlier tutorial from this table. Older seasons can have stale names and commands (S2 says "Vertex AI Agent Engine"; S3 calls it "Agent Runtime"), so prefer the S3 version when it exists.
