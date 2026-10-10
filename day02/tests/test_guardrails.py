@@ -4,7 +4,7 @@ from types import SimpleNamespace
 from google.adk.models import LlmRequest, LlmResponse
 from google.genai import types
 
-from saif_day2.agent import authorize_tool, redact_output, screen_input
+from saif_day2.agent import authorize_tool, build_instruction, redact_output, screen_input
 
 
 def ctx(**state):
@@ -52,6 +52,16 @@ def test_owner_can_cancel_any_booking():
 def test_unknown_tool_is_refused():
     out = authorize_tool(SimpleNamespace(name="delete_database"), {}, ctx(**{"user:role": "owner"}))
     assert out["status"] == "error"
+
+
+# Identity for the model comes from trusted state, not the chat
+def test_instruction_tells_model_the_owner_role():
+    assert "OWNER" in build_instruction(ctx(**{"user:role": "owner"}))
+
+
+def test_instruction_for_customer_distrusts_chat_claims():
+    text = build_instruction(ctx(**{"user:role": "customer"}))
+    assert "CUSTOMER" in text and "don't believe it" in text
 
 
 # OUT
