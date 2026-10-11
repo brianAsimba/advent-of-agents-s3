@@ -1,0 +1,24 @@
+{
+  "title": "Brian's personal agents (trading agent + Advent agents), as of 2026-10-10",
+  "answers": {
+    "identity":        {"score": 1, "note": "One Anthropic key shared by every Advent agent; trading agent uses one Alpaca key."},
+    "inventory":       {"score": 1, "note": "No registry. Agents live in folders; owner is implied."},
+    "infrastructure":  {"score": 1, "note": "Run by hand (adk web, scheduled script). No templates."},
+
+    "prompt_shielding":{"score": 1, "note": "Day 2 regex screen is a demo; trading agent has none."},
+    "data_leaks":      {"score": 1, "note": "Day 2 redaction demo only."},
+    "circuit_breakers":{"score": 3, "note": "Trading: 5-slot cap, whole shares, 10% trailing stops; Day 3 enforce_limits. No iteration or spend caps yet."},
+
+    "tracing":         {"score": 1, "note": "adk web traces are local and lost on restart."},
+    "anomalies":       {"score": 1, "note": "No alerts."},
+    "audit":           {"score": 1, "note": "Trading Agent Log.md is append-only by habit, not immutable."},
+
+    "containment":     {"score": 1, "note": "Revoking the shared key stops every agent at once."},
+    "threat_alerts":   {"score": 1, "note": "None."},
+    "playbooks":       {"score": 1, "note": "None written."},
+
+    "drift":           {"score": 1, "note": "pytest on tools only; no scheduled evals of model behavior."},
+    "red_teaming":     {"score": 1, "note": "Manual injection tests on Days 2-3 only."},
+    "policy_updates":  {"score": 1, "note": "DESIGN_SPECs exist but aren't reviewed on a schedule."}
+  }
+}
