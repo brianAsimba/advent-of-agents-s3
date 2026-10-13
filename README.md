@@ -14,10 +14,10 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | Day | Topic | Notes | Code run |
 |---|---|---|---|
 | 0 | Kick-off: agent governance & security (video) | | |
-| 1 | Five phases of the Agent Development Lifecycle | [notes](notes/day01-adlc.md) | â˜ [day01/](day01/README.md) (Claude) |
-| 2 | Agent security: SAIF guardrails | [notes](notes/day02-saif-guardrails.md) | â˜ [day02/](day02/README.md) (Claude, barber-shop guardrails) |
+| 1 | Five phases of the Agent Development Lifecycle | [notes](notes/day01-adlc.md) | ☑ [day01/](day01/README.md) (Claude) |
+| 2 | Agent security: SAIF guardrails | [notes](notes/day02-saif-guardrails.md) | ☑ [day02/](day02/README.md) (Claude, barber-shop guardrails) |
 | 3 | Architecting secure multi-agent systems | [notes](notes/day03-secure-multi-agent.md) | ☑ [day03/](day03/README.md) (Claude, 3-agent trading desk) |
-| 4 | Governance maturity model | [notes](notes/day04-governance-maturity.md) | â˜ [day04/assess.py](day04/assess.py) (self-assessment) |
+| 4 | Governance maturity model | [notes](notes/day04-governance-maturity.md) | ☑ [day04/assess.py](day04/assess.py) (self-assessment) |
 | 5 | Agent identity: one identity per agent | [notes](notes/day05-agent-identity.md) | ☐ [day05/](day05/README.md) (local identity, deny-by-default, audit) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
