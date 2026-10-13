@@ -5,3 +5,9 @@ __pycache__/
 .adk/
 node_modules/
 
+
+# Day 5 local state
+day05/warehouse.db
+day05/audit.jsonl
+day05/iam.json
+
