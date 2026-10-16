@@ -1,0 +1,23 @@
+{
+  "comment": "Local model of an IAM Access Policy on Agent Gateway. DENY rules are evaluated first; then ALLOW; anything unmatched is denied (default deny).",
+  "rules": [
+    {
+      "description": "Nobody deletes customer accounts through an agent",
+      "effect": "DENY",
+      "principals": ["spiffe://brian.local/agents/*"],
+      "condition": {"tool_name_in": ["delete_account"]}
+    },
+    {
+      "description": "The support agent may not move money",
+      "effect": "DENY",
+      "principals": ["spiffe://brian.local/agents/support_agent"],
+      "condition": {"tool_name_in": ["issue_refund"]}
+    },
+    {
+      "description": "Allow registered MCP servers only",
+      "effect": "ALLOW",
+      "principals": ["spiffe://brian.local/agents/*"],
+      "condition": {"destination_is_registered": true}
+    }
+  ]
+}
