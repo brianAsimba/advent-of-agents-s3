@@ -22,7 +22,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | 6 | Token delegation: acting on behalf of the user | [notes](notes/day06-token-delegation.md) | ☑ [day06/](day06/README.md) (shared token vs delegated, on Claude) |
 | 7 | Offline delegation: acting while users sleep | [notes](notes/day07-offline-delegation.md) | ☑ [day07/](day07/README.md) (refresh rotation, reuse detection) |
 | 8 | Agent policies: block dangerous tools at a gateway | [notes](notes/day08-agent-policies.md) | ☑ [day08/](day08/README.md) (DENY-first policy, default deny) |
-| 9 | Principal Access Boundaries: contain blast radius | [notes](notes/day09-principal-access-boundaries.md) | ☐ [day09/](day09/README.md) (folder inheritance vs identity fence) |
+| 9 | Principal Access Boundaries: contain blast radius | [notes](notes/day09-principal-access-boundaries.md) | ☑ [day09/](day09/README.md) (folder inheritance vs identity fence) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
 Don't binge the old seasons. When a Season 3 day assumes something I don't know, open **one** earlier tutorial from this table. Older seasons can have stale names and commands (S2 says "Vertex AI Agent Engine"; S3 calls it "Agent Runtime"), so prefer the S3 version when it exists.
