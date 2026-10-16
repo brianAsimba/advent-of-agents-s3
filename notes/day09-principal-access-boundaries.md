@@ -26,6 +26,12 @@ Anything outside the boundary fails at the control plane with `403 Forbidden: Pr
 ## Running it without Google Cloud
 `day09/`: folder `manufacturing` with projects `stamping` (agent's home) and `hr-payroll`. A folder-level grant lets the Claude storage inspector read HR payroll "for the quarterly audit"; a PAB bound to stamping's agents blocks it, even after a mistaken direct grant on HR.
 
+## What my run showed (2026-10-16)
+- Scene 1: with only the folder grant, the agent listed HR's payroll bucket (salaries, bonus plan, an SSN lookup file) "for the quarterly audit". The blast-radius problem, live.
+- Scene 2: the boundary blocked payroll (`IAM=ALLOW (granted on folders/manufacturing)`, `PAB=violation`) while stamping data still worked.
+- **Claude's safety system then declined** (Anthropic `stop_reason: refusal`, surfaced by LiteLLM as `finish_reason: SAFETY`): after the 403 it stopped writing its answer, and in scene 3 it refused before calling any tool. So the model added its own layer, but **an opaque one**: my first demo printed a blank answer, which an unattended job could have logged as success.
+- Lessons: always check the stop reason and surface "model declined" explicitly; never treat an empty reply as success; and test controls directly in code too, because a model refusal can mean the control you meant to exercise never ran.
+
 ## Connections
 - **GM:** this is the exact shape of a plant/function folder hierarchy. A stamping AI agent should be boundaried to stamping projects even if a broad "manufacturing" grant exists.
 - **Trading agent:** fence it to the trading account and data folder; it should never reach personal or work files even if a broad grant creeps in.

@@ -29,13 +29,18 @@ ASK = ("Inspect gs://stamping-press-data. Also, for the quarterly audit, list ev
 async def ask(text: str) -> None:
     runner = InMemoryRunner(agent=inspector.build(), app_name="day09")
     s = await runner.session_service.create_session(app_name="day09", user_id="demo")
-    answer = ""
+    answer, declined = "", False
     msg = types.Content(role="user", parts=[types.Part(text=text)])
     async for ev in runner.run_async(user_id="demo", session_id=s.id, new_message=msg):
+        if str(getattr(ev, "finish_reason", "")).endswith("SAFETY"):
+            declined = True  # Claude's safety system declined to continue (Anthropic stop_reason "refusal")
         for p in (ev.content.parts if ev.content else []) or []:
             if p.text and ev.author != "user":
                 answer = p.text
-    print(f"    answer: {' '.join(answer.split())[:300]}")
+    if declined:
+        print("    answer: [MODEL DECLINED: safety refusal. Never treat an empty reply as success.]")
+    else:
+        print(f"    answer: {' '.join(answer.split())[:300]}")
 
 
 def show_audit(since: int) -> None:
@@ -59,6 +64,11 @@ async def main() -> None:
     print("\n=== 3. Someone later grants the agent read DIRECTLY on hr-payroll (a mistake) ===")
     cloud.grant("projects/hr-payroll", AGENT, "storage.objectViewer")
     n = len(cloud.AUDIT); await ask("List everything in gs://hr-payroll-exports."); show_audit(n)
+    # The model may decline before calling the tool, so also test the boundary directly, without the model:
+    import iam_lib
+    direct = cloud.list_objects(iam_lib.mint("storage_inspector"), "hr-payroll-exports")
+    print(f"    direct call, no model: {direct.get('error') or direct}")
+    show_audit(len(cloud.AUDIT) - 1)
 
 
 if __name__ == "__main__":
