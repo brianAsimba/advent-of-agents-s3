@@ -18,7 +18,8 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | 2 | Agent security: SAIF guardrails | [notes](notes/day02-saif-guardrails.md) | ☑ [day02/](day02/README.md) (Claude, barber-shop guardrails) |
 | 3 | Architecting secure multi-agent systems | [notes](notes/day03-secure-multi-agent.md) | ☑ [day03/](day03/README.md) (Claude, 3-agent trading desk) |
 | 4 | Governance maturity model | [notes](notes/day04-governance-maturity.md) | ☑ [day04/assess.py](day04/assess.py) (self-assessment) |
-| 5 | Agent identity: one identity per agent | [notes](notes/day05-agent-identity.md) | ☐ [day05/](day05/README.md) (local identity, deny-by-default, audit) |
+| 5 | Agent identity: one identity per agent | [notes](notes/day05-agent-identity.md) | ☑ [day05/](day05/README.md) (local identity, deny-by-default, audit) |
+| 6 | Token delegation: acting on behalf of the user | [notes](notes/day06-token-delegation.md) | ☐ [day06/](day06/README.md) (shared token vs delegated, on Claude) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
 Don't binge the old seasons. When a Season 3 day assumes something I don't know, open **one** earlier tutorial from this table. Older seasons can have stale names and commands (S2 says "Vertex AI Agent Engine"; S3 calls it "Agent Runtime"), so prefer the S3 version when it exists.

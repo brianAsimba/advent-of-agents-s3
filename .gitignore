@@ -11,3 +11,7 @@ day05/warehouse.db
 day05/audit.jsonl
 day05/iam.json
 
+# Day 6 local state
+day06/vault.json
+day06/audit.jsonl
+
