@@ -36,6 +36,9 @@ async def run_job(runner: InMemoryRunner, user: str) -> None:
                 answer = p.text
     print(f"    data received : {got}")
     print(f"    briefing      : {' '.join(answer.split())[:260]}")
+    while overnight.OUTBOX:
+        n = overnight.OUTBOX.pop(0)
+        print(f"    notice to {n['user']} (sent by code, not the model): {n['message']}")
 
 
 def show_vault(user: str) -> None:
@@ -67,6 +70,10 @@ async def main() -> None:
 
     print("\n=== 6. Night 3: the job now fails closed (the token family was revoked) ===")
     await run_job(runner, "alice")
+
+    print("\n=== Security log (for the owner/admin) ===")
+    for e in overnight.SECURITY_LOG:
+        print(f"    user={e['user']}  event={e['event']}  action={e['action']}")
 
     print("\n=== Vault audit (agent identity on every read) ===")
     for e in vault.AUDIT:

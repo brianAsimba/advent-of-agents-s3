@@ -59,6 +59,23 @@ def test_access_token_expires_after_15_minutes():
     assert reports_api.get_reports(t["access_token"], now=16 * 60)["status"] == 401
 
 
+def test_never_set_up_gets_its_own_notice():
+    overnight.OUTBOX.clear()
+    assert job("alice")["code"] == "not_set_up"
+    assert overnight.OUTBOX[-1]["message"] == overnight.NOTICES["not_set_up"]
+
+
+def test_token_theft_triggers_fixed_security_alert():
+    overnight.OUTBOX.clear(); overnight.SECURITY_LOG.clear()
+    stolen = consent("alice")["refresh_token"]
+    job("alice")
+    reports_api.refresh(stolen)                      # the thief replays the old token
+    out = job("alice")
+    assert out["code"] == "possible_token_theft"
+    assert overnight.OUTBOX[-1]["message"].startswith("SECURITY ALERT")
+    assert overnight.SECURITY_LOG[-1]["event"] == "refresh_token_reuse"
+
+
 def test_other_agents_cannot_read_the_vault():
     consent("alice")
     with pytest.raises(PermissionError):

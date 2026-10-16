@@ -25,6 +25,9 @@ Refresh tokens are long-lived, so they're worth stealing. Rotation means each to
 ## Running it without Google Cloud
 `day07/demo.py`: an overnight summarizer on Claude acting for alice with no human present. It shows fail-closed without consent, one-time consent, two nights of rotation, an attacker replaying the day-1 token (family revoked), and night 3 failing closed. 7 tests.
 
+## What my run showed (2026-10-15)
+Everything worked mechanically: fail-closed without consent, rotation each night, theft detected on replay, night 3 fail-closed. **But the model softened the security outcome:** the theft was reported to alice as "expired or cancelled", and "never set up" as "expired". Rule: **security events and failure reasons from unattended jobs are reported by code, in fixed words, through a channel the model doesn't write.** Also: the vault never saw the thief (they went straight to the OAuth provider), so theft detection needs the provider's logs too (Day 4's Detection layer).
+
 ## Connections to my work
 - **Trading agent:** it already runs unattended every day. Today it holds a static Alpaca key forever. The Day 7 pattern is short-lived tokens, a vault the agent reads as itself, and rotation.
 - **summit-sync:** a scheduled job too. If it ever needed a user's account, it should use offline delegation, never a master key.

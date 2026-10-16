@@ -22,3 +22,9 @@ Six scenes: no consent → the job fails closed · alice consents once · night 
 
 ## Why rotation matters
 A refresh token lives for weeks. If it's stolen, rotation turns the theft into a **detectable event**: the first time either the thief or the job uses an already-used token, the provider kills the whole family. The cost is one morning where alice must sign in again, instead of a silent leak.
+
+## Fix added after the first run: fixed security notices
+In the first run, Claude summarized a **detected token theft** as "your sign-in has expired or been cancelled", and a never-configured setup as "expired". Summarizing is the model's job, but security outcomes must not be reworded. Now:
+- the tool classifies each failure in code: `not_set_up`, `access_revoked` or `possible_token_theft`;
+- `notify()` sends a **fixed message** to the user through an outbox (code, not the model), and theft also goes to a **security log** for the owner;
+- the demo prints each notice as "sent by code, not the model".
