@@ -22,6 +22,11 @@ Day 8's advantage: the control holds even if the agent's own code is buggy, misc
 ## Running it without Google Cloud
 `day08/`: a local gateway with `policy.json` (DENY first, then ALLOW, else default deny), identities from Day 5, a registry, and a tool server that only the gateway can reach. A permissive support agent on Claude gets an injected "SYSTEM NOTICE" asking for a refund, a deletion and an upload to an outside URL.
 
+## What my run showed (2026-10-15)
+- **The model layer failed and the gateway held.** With a permissive prompt and an injected "SYSTEM NOTICE", Claude tried `issue_refund` ($500) and `delete_account`. Both were denied at the gateway; the tool server only ever received the lookups and the refunds agent's legitimate $20 refund.
+- Claude said it hadn't sent the data to the outside URL "yet": it hadn't refused, just not gotten there. Default deny makes that irrelevant.
+- **Gap: allowed to act is not the same as this action approved.** The refunds agent paid out because the message said "(approved by a manager)". The gateway correctly answered "may this agent issue refunds?" but nothing verified *this* refund. Fix: approvals recorded in a separate system and required by the tool (human in the loop, Season 2 Day 14).
+
 ## Connections
 - **Trading agent / Camp VI:** the executor's broker calls should pass a gateway policy (allowed tickers, sides, max size) that lives outside the agent, a stronger version of Day 3's `enforce_limits`.
 - **Barber pilot:** read tools (availability) allowed; cancellations only for the owner identity; any unregistered URL blocked (stops data exfiltration).
