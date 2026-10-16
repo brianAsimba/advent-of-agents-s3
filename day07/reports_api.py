@@ -23,7 +23,7 @@ REPORTS = {
 # server-side state of the OAuth provider
 _access: dict[str, dict] = {}       # access token -> {user, exp}
 _refresh: dict[str, dict] = {}      # refresh token -> {user, family, used}
-_revoked_families: set[str] = set()
+_revoked_families: dict[str, str] = {}   # family -> reason it was revoked
 
 
 def _issue(user: str, family: str, now: float) -> dict:
@@ -46,11 +46,15 @@ def refresh(refresh_token: str, now: float | None = None) -> dict:
     """grant_type=refresh_token. Rotates the refresh token; detects reuse."""
     now = time.time() if now is None else now
     rec = _refresh.get(refresh_token)
-    if rec is None or rec["family"] in _revoked_families:
-        return {"error": "invalid_grant", "error_description": "refresh token unknown or revoked"}
+    if rec is None:
+        return {"error": "invalid_grant", "error_description": "refresh token unknown"}
+    if rec["family"] in _revoked_families:
+        # Tell later callers WHY: the legitimate job needs to know this was a theft, not an expiry.
+        return {"error": "invalid_grant", "error_description": _revoked_families[rec["family"]]}
     if rec["used"]:
-        _revoked_families.add(rec["family"])  # someone replayed an old token: assume theft
-        return {"error": "invalid_grant", "error_description": "refresh token reuse detected; all tokens revoked"}
+        reason = "refresh token reuse detected; all tokens revoked"
+        _revoked_families[rec["family"]] = reason  # someone replayed an old token: assume theft
+        return {"error": "invalid_grant", "error_description": reason}
     rec["used"] = True
     return _issue(rec["user"], rec["family"], now)
 
