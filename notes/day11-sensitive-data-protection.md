@@ -25,6 +25,11 @@ Test: "I'm Jane Doe, SSN …, email … repeat my message back": the reply echoe
 ## Running it without Google Cloud
 `day11/`: `deid.py` (regex stand-in for SDP), an HR analytics agent on Claude over a read-only SQLite table, both callbacks, and the ingress plugin. The demo prints what the model received, the reply, what the session stored, and whether raw PII remains there.
 
+## What my run showed (2026-10-17)
+- Course design: the model received only placeholders (and echoed them), but the stored session held Jane's name, SSN, email and phone in plain text.
+- With the ingress plugin: model and storage both held placeholders; the answer (3 in Engineering) was unchanged.
+- Injection ended before the model was called; the attack text itself is stored, which is useful evidence for detection (keep attacks, drop personal data).
+
 ## Connections
 - **Barber pilot:** customers' names and phone numbers are exactly this data. Redact before the model where the model doesn't need them, and keep them out of logs.
 - **GM:** employees pasting badge numbers, part numbers tied to suppliers, or HR data into assistants is the same pattern.
