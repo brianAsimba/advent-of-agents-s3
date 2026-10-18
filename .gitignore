@@ -15,3 +15,7 @@ day05/iam.json
 day06/vault.json
 day06/audit.jsonl
 
+# Day 14 local outputs (inventory of my installed skills)
+day14/skills.lock.json
+day14/skill_review.md
+
