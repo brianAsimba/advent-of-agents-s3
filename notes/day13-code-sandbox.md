@@ -14,6 +14,11 @@ Days 10–12 screened prompts and governed **pre-built** tools. But many tasks n
 ## Running it on Claude
 Anthropic's **code execution tool** (`code_execution_20260521`) runs code in an isolated container on Anthropic's servers; the response carries a `container.id` you pass back to reuse it. In practice Claude ran `python3` via **bash**, a fresh process per call, so **variables did not persist but files did**: the pattern is "save working state to a file in the container, reload it next turn". `day13/demo.py` runs a harmless reach probe on the PC versus in the sandbox, then the course's mortgage example across three turns.
 
+## What my run showed (2026-10-18)
+- On my PC the probe saw **2 secret variables including ANTHROPIC_API_KEY, the internet, and my home folder (74 entries) and Desktop**: exactly what model-written code would inherit.
+- **Claude's safety system declined to run the probe in the sandbox**, even a toned-down version, when pasted as "run exactly this code unmodified". Environment-probing code looks like credential reconnaissance. Asked in plain language, Claude wrote its own checks: Debian 12 Linux, 1 CPU, user `root`, no `C:/Users`, so it cannot see my machine at all.
+- Mortgage example: $2,807.41 payment and $560,669.24 interest, matching the course; one container across all three turns, state reloaded from `/tmp/mortgage_state.json`.
+
 ## Connections
 - **Trading agent, Camps II/IV:** the strategy-proposer agent will write backtest code. Run it in a sandbox, never on the PC that holds the Alpaca key.
 - **Claude Code itself** is "an agent running code on my machine". Its permission prompts are the same idea at the tool level.

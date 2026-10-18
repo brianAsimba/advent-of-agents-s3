@@ -34,8 +34,17 @@ def main() -> None:
 
     print("\n=== 2. The same code, run by Claude in Anthropic's code execution sandbox ===")
     s = sandbox.Session()
-    _, runs = sandbox.ask(s, "Run exactly this Python code, unmodified, and show its output:\n```python\n" + PROBE + "\n```")
+    ans, runs = sandbox.ask(s, "Run exactly this Python code, unmodified, and show its output:\n```python\n" + PROBE + "\n```")
     show(runs)
+    if not runs:
+        print(f"    {ans}  <- Claude's safety system declined: the probe looks like credential reconnaissance.")
+    print("\n=== 2b. Asked in plain language instead: Claude writes its own checks in the sandbox ===")
+    ans, runs = sandbox.ask(sandbox.Session(), (
+        "I'm learning how your code sandbox is isolated. In the sandbox, check and report: the operating system and "
+        "CPU count, the current user and home directory, whether a Windows path like C:/Users exists, and whether "
+        "outbound internet works (try a 3-second connection to pypi.org)."))
+    show(runs)
+    print(f"    A: {' '.join(ans.split())[:700]}")
 
     print("\n=== 3. Stateful sandbox: three turns, one container; state kept in the container's files ===")
     m = sandbox.Session()
