@@ -28,6 +28,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | 12 | Semantic policy in plain English | [notes](notes/day12-semantic-policy.md) | ☑ [day12/](day12/README.md) (Claude judge, intent check, dry run) |
 | 13 | Code execution sandbox | [notes](notes/day13-code-sandbox.md) | ☑ [day13/](day13/README.md) (PC vs Anthropic sandbox, container reuse) |
 | 14 | Skill scanning (supply chain) | [notes](notes/day14-skill-scanning.md) | ☑ [day14/](day14/README.md) (lockfile + read-only review of my skills) |
+| 15 | Agent memory isolation: users, teams, regions | [notes](notes/day15-memory-isolation.md) | ☑ [day15/](day15/README.md) (exact-match scopes, IAM Conditions, US/EU banks) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
 Don't binge the old seasons. When a Season 3 day assumes something I don't know, open **one** earlier tutorial from this table. Older seasons can have stale names and commands (S2 says "Vertex AI Agent Engine"; S3 calls it "Agent Runtime"), so prefer the S3 version when it exists.
