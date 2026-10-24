@@ -34,7 +34,7 @@ def build_server(version: str) -> MCPServer:
     @server.tool()
     def get_release_notes(release: str) -> dict:
         """Release notes for one version, e.g. '1.3.2'."""
-        return {"release": release, "notes": RELEASES.get(release, "unknown release"), "served_by": version}
+        return {"release": release, "notes": RELEASES.get(release, "unknown release"), "server_version": version}
 
     return server
 
