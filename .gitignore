@@ -22,3 +22,6 @@ day14/skill_review.md
 
 # Day 17 local plan/apply state and builds
 day17/.iac/
+
+# Day 18 local registry + gateway audit
+day18/.registry/

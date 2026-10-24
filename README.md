@@ -31,6 +31,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | 15 | Agent memory isolation: users, teams, regions | [notes](notes/day15-memory-isolation.md) | ☑ [day15/](day15/README.md) (exact-match scopes, IAM Conditions, US/EU banks) |
 | 16 | Agent payments: UCP + AP2 mandates | [notes](notes/day16-agent-payments.md) | ☑ [day16/](day16/README.md) (signed carts, approval card, spend cap, red team 12/12) |
 | 17 | Infrastructure as code + CI/CD | [notes](notes/day17-iac-cicd.md) | ☑ [day17/](day17/README.md) (plan/guard/apply/drift + GitHub Actions CI) |
+| 18 | Agent Registry: one catalog, bind by name | [notes](notes/day18-agent-registry.md) | ☑ [day18/](day18/README.md) (real MCP, schema introspection, gateway allowlist) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
 Don't binge the old seasons. When a Season 3 day assumes something I don't know, open **one** earlier tutorial from this table. Older seasons can have stale names and commands (S2 says "Vertex AI Agent Engine"; S3 calls it "Agent Runtime"), so prefer the S3 version when it exists.

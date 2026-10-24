@@ -1,0 +1,10 @@
+{
+  "_comment": "Gateway policy (course: day18-analytics-uap-rules.json). Discovery is always allowed; tools/call only for listed tools. Everything else is implicitly denied.",
+  "rules": [
+    {
+      "principal": "spiffe://brian.local/agents/revenue-insights-agent",
+      "server": "customer-analytics-mcp",
+      "allow_tools_call": ["query_kpi_summary", "create_data_quality_ticket"]
+    }
+  ]
+}
