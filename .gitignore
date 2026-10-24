@@ -25,3 +25,6 @@ day17/.iac/
 
 # Day 18 local registry + gateway audit
 day18/.registry/
+
+# Day 19 local registry + credential store
+day19/.state/
