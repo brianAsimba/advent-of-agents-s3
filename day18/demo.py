@@ -8,9 +8,12 @@ import asyncio
 import json
 import os
 import sys
+import warnings
 from pathlib import Path
 
 from dotenv import load_dotenv
+
+warnings.filterwarnings("ignore", message=r"\[EXPERIMENTAL\]", category=UserWarning)  # ADK feature notices
 
 HERE = Path(__file__).resolve().parent
 load_dotenv(HERE / ".env")
