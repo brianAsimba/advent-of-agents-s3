@@ -1,0 +1,28 @@
+# CI for this repo (Day 17). Every pull request and every push to main:
+#   1. runs all model-free tests (no API key: CI gets no secrets)
+#   2. runs the Day 17 plan + security guard, which fails the check if a change weakens the agent stack
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read # least privilege: CI can read the code, nothing else
+
+jobs:
+  test-and-plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - name: Install (locked)
+        run: uv sync --frozen
+      - name: Tests
+        run: uv run pytest -q
+      - name: Plan + guard (Day 17)
+        run: uv run python day17/pipeline.py plan

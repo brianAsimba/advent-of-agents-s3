@@ -1,0 +1,18 @@
+{
+  "layer": "runtime",
+  "resources": {
+    "agent": {
+      "type": "agent_runtime",
+      "name": "terraform-demo-agent",
+      "image": "${build.image}",
+      "identity": "spiffe://brian.local/agents/terraform-demo-agent",
+      "ingress_gateway": "${foundation.ingress_gateway.id}",
+      "egress_gateway": "${foundation.egress_gateway.id}"
+    },
+    "agent_roles": {
+      "type": "iam_binding",
+      "member": "spiffe://brian.local/agents/terraform-demo-agent",
+      "roles": ["aiplatform.user", "logging.logWriter"]
+    }
+  }
+}

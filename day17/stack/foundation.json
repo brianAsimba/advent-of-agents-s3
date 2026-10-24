@@ -1,0 +1,19 @@
+{
+  "layer": "foundation",
+  "resources": {
+    "network": {"type": "vpc", "name": "agents-vpc"},
+    "registry": {"type": "artifact_registry", "name": "agents"},
+    "ingress_gateway": {
+      "type": "agent_gateway",
+      "direction": "client_to_agent",
+      "shield": {"prompt_injection": "block", "pii": "redact", "fail_mode": "closed"}
+    },
+    "egress_gateway": {
+      "type": "agent_gateway",
+      "direction": "agent_to_anywhere",
+      "default": "deny",
+      "allow": ["api.anthropic.com", "meridian.example"]
+    },
+    "spend_policy": {"type": "governance_policy", "tool": "complete_purchase", "max_cents": 10000}
+  }
+}
