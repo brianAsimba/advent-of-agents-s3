@@ -34,6 +34,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | 18 | Agent Registry: one catalog, bind by name | [notes](notes/day18-agent-registry.md) | ☑ [day18/](day18/README.md) (real MCP, schema introspection, gateway allowlist) |
 | 19 | Dynamic MCP governance: no hardcoded endpoints | [notes](notes/day19-dynamic-mcp.md) | ☑ [day19/](day19/README.md) (registry meta-MCP, credential binding, inline screening) |
 | 20 | Two gateways: egress vs ingress (Apigee) | [notes](notes/day20-two-gateways.md) | ☑ [day20/](day20/README.md) (REST→MCP, mediation 13× fewer tokens, Spike Arrest 429) |
+| 21 | Governance archetypes: hub vs federated vs hub-of-hubs | [notes](notes/day21-governance-archetypes.md) | ☑ [day21/](day21/README.md) (advisor, two-tier policy, A/B/C simulation) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
 Don't binge the old seasons. When a Season 3 day assumes something I don't know, open **one** earlier tutorial from this table. Older seasons can have stale names and commands (S2 says "Vertex AI Agent Engine"; S3 calls it "Agent Runtime"), so prefer the S3 version when it exists.

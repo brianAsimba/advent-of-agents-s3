@@ -28,3 +28,6 @@ day18/.registry/
 
 # Day 19 local registry + credential store
 day19/.state/
+
+# Day 21 generated policy
+day21/.out/
