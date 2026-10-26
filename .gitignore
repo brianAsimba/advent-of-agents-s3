@@ -31,3 +31,6 @@ day19/.state/
 
 # Day 21 generated policy
 day21/.out/
+
+# Day 22 captured traces (contain prompts)
+day22/traces/
