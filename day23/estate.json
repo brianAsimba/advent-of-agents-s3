@@ -1,0 +1,25 @@
+{
+  "_comment": "Declared estate (what the registry knows). Servers and agents echo Days 18-20. Fictional owners.",
+  "mcp_servers": [
+    {"name": "customer-analytics-mcp", "owner": "data-platform", "runtime": "gke"},
+    {"name": "release-notes-mcp", "owner": "platform", "runtime": "cloud-run"},
+    {"name": "crm-accounts-mcp", "owner": "integration", "runtime": "apigee"},
+    {"name": "legacy-search-mcp", "owner": "search-team", "runtime": "gke"},
+    {"name": "weather-mcp", "owner": "platform", "runtime": "cloud-run"}
+  ],
+  "agents": [
+    {"name": "revenue-insights-agent", "owner": "finance-analytics", "runtime": "agent-runtime"},
+    {"name": "governed-release-auditor", "owner": "platform", "runtime": "agent-runtime"},
+    {"name": "billing-agent", "owner": "billing-ops", "runtime": "cloud-run"},
+    {"name": "support-concierge", "owner": "cx-team", "runtime": "agent-runtime"},
+    {"name": "nightly-report-job", "owner": "data-eng", "runtime": "gke"}
+  ],
+  "bindings": [
+    {"agent": "revenue-insights-agent", "server": "customer-analytics-mcp"},
+    {"agent": "revenue-insights-agent", "server": "legacy-search-mcp"},
+    {"agent": "governed-release-auditor", "server": "release-notes-mcp"},
+    {"agent": "billing-agent", "server": "crm-accounts-mcp"},
+    {"agent": "support-concierge", "server": "crm-accounts-mcp"},
+    {"agent": "support-concierge", "server": "legacy-search-mcp"}
+  ]
+}

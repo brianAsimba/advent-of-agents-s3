@@ -36,6 +36,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | 20 | Two gateways: egress vs ingress (Apigee) | [notes](notes/day20-two-gateways.md) | ☑ [day20/](day20/README.md) (REST→MCP, mediation 13× fewer tokens, Spike Arrest 429) |
 | 21 | Governance archetypes: hub vs federated vs hub-of-hubs | [notes](notes/day21-governance-archetypes.md) | ☑ [day21/](day21/README.md) (advisor, two-tier policy, A/B/C simulation) |
 | 22 | Agent observability: one audit trail | [notes](notes/day22-observability.md) | ☑ [day22/](day22/README.md) (ADK + OpenInference spans, bridge, normalized view, locked table) |
+| 23 | Agent topology: blast radius before you delete a tool | [notes](notes/day23-topology-blast-radius.md) | ☑ [day23/](day23/README.md) (registry + traces graph, SAFE/STOP, topology MCP) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
 Don't binge the old seasons. When a Season 3 day assumes something I don't know, open **one** earlier tutorial from this table. Older seasons can have stale names and commands (S2 says "Vertex AI Agent Engine"; S3 calls it "Agent Runtime"), so prefer the S3 version when it exists.
