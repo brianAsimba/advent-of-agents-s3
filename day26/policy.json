@@ -1,0 +1,11 @@
+{
+  "min_rate_per_sec": 1.0,
+  "max_burst": 20,
+  "rate_tolerance": 0.2,
+  "min_surge_availability": 0.9,
+  "max_calm_block_rate": 0.01,
+  "denied_actions": ["reboot_database", "flush_db_connections", "drop_database", "disable_gate", "edit_policy"],
+  "allowed_specialist_tools": ["read_metrics", "read_limiter_status", "propose_rate_limit"],
+  "on_call": ["riley"],
+  "operators": ["riley", "morgan"]
+}
