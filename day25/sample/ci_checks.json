@@ -1,0 +1,8 @@
+[
+  {"path": "/health", "params": [], "status": 200, "contains": "ok"},
+  {"path": "/products/1", "params": [], "status": 200, "contains": "Widget"},
+  {"path": "/search", "params": [{"name": "q", "value": "Widget"}], "status": 200, "contains": "Widget"},
+  {"path": "/ping", "params": [{"name": "host", "value": "example.com"}], "status": 200, "shell_contains": "example.com"},
+  {"path": "/hello", "params": [{"name": "name", "value": "Ann"}], "status": 200, "contains": "Ann"},
+  {"path": "/invoices/1", "params": [], "status": 200, "contains": "alice-march-invoice"}
+]
