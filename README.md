@@ -40,6 +40,7 @@ dayNN/      code for each day (scaffolds, scripts, outputs)
 | 24 | Agent anomaly detection: catch agents going off-script | [notes](notes/day24-anomaly-detection.md) | ☑ [day24/](day24/README.md) (baseline scan, Claude reviewer on outliers, fails closed) |
 | 25 | CodeMender: fix vulnerable code before it merges | [notes](notes/day25-codemender.md) | ☑ [day25/](day25/README.md) (scan, proven exploits, staged patch, human approval bound to patch + commit) |
 | 26 | Self-evolving agents: gate every change, keep a kill-switch | [notes](notes/day26-self-evolving-agents.md) | ☑ [day26/](day26/README.md) (five gates on measured behavior, signed mounts, epoch-based reset, chaos probe) |
+| 27 | Data boundaries: VPC-SC, CMEK and data residency | [notes](notes/day27-data-boundaries.md) | ☑ [day27/](day27/README.md) (org policies, perimeter with dry run, real envelope encryption, key kill switch) |
 
 ## Prerequisite lookup (Seasons 1 & 2)
 Don't binge the old seasons. When a Season 3 day assumes something I don't know, open **one** earlier tutorial from this table. Older seasons can have stale names and commands (S2 says "Vertex AI Agent Engine"; S3 calls it "Agent Runtime"), so prefer the S3 version when it exists.

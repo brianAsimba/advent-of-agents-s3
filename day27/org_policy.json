@@ -1,0 +1,6 @@
+{
+  "gcp.resourceLocations": {"allow": ["in:us-locations"]},
+  "gcp.restrictEndpointUsage": {"deny": ["in:non-us-aiplatform-endpoints"]},
+  "gcp.restrictNonCmekServices": {"deny": ["aiplatform.googleapis.com", "storage.googleapis.com", "bigquery.googleapis.com"]},
+  "iam.disableServiceAccountKeyCreation": {"enforce": true}
+}
